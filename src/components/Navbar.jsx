@@ -45,6 +45,12 @@ export default function Navbar() {
                  {session?.user ? (
                     <div className="flex-center gap-3 md:gap-5">
                         <Link 
+                            href="/add-time"
+                            className="black_btn"
+                        >
+                            Add Time
+                        </Link>
+                        <Link 
                             href="/leaderboard"
                             className="black_btn"
                         >
@@ -109,8 +115,16 @@ export default function Navbar() {
                                     Profile
                                 </Link>
                                 <Link 
+                                    href="/add-time"
+                                    className="w-full black_btn"
+                                    onClick={() => setToggleDropdown(false)}
+                                >
+                                    Add Time
+                                </Link>
+                                <Link 
                                     href="/leaderboard"
-                                    className="w-full mt-5 black_btn"
+                                    className="w-full black_btn"
+                                    onClick={() => setToggleDropdown(false)}
                                 >
                                     Leaderboard
                                 </Link>

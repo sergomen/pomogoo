@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'primary-orange': '#FF5722',
       },
       fontFamily: {
         satoshi: ['Satoshi', 'sans-serif'],

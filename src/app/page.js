@@ -123,8 +123,8 @@ export default function Home() {
   }, [seconds, pomodoro, shortBreak, longBreak, ticking]);
 
   return (
-    <main className="bg-slate-950 min-h-screen">
-      <div className="max-w-2xl min-h-screen mx-auto">
+    <section className="bg-slate-950 min-h-screen">
+      <div className="max-w-2xl mx-auto">
         <TimerNavbar setOpenSettings={setOpenSettings} />
         <Timer 
             stage={stage} 
@@ -148,6 +148,6 @@ export default function Home() {
           updateTimeDefaultValue={updateTimeDefaultValue}
         />
       </div>
-    </main>
+    </section>
   )
 }
