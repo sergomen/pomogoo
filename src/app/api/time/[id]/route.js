@@ -41,7 +41,7 @@ export const DELETE = async (req, { params }) => {
     try {
         await connectToDB();
 
-        await Time.findByIdAndRemove(params.id);
+        await Time.findByIdAndDelete(params.id);
 
         return new Response("Time deleted successfully", { status: 200 });
     } catch (error) {
