@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspence } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import Form from '@/components/Form';
 
-export default function EditTime() {
+const UpdateTime = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const timeId = searchParams.get('id');
@@ -64,4 +64,10 @@ export default function EditTime() {
         handleSubmit={updateTime}
     />
   );
+};
+
+export default function EditTime() {
+    return <Suspence>
+        <UpdateTime />
+    </Suspence>
 };
