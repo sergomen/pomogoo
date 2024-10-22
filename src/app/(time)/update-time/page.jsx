@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspence } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import Form from '@/components/Form';
@@ -67,7 +67,7 @@ const UpdateTime = () => {
 };
 
 export default function EditTime() {
-    return <Suspence>
+    return <Suspense>
         <UpdateTime />
-    </Suspence>
+    </Suspense>
 };
