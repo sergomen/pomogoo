@@ -22,11 +22,18 @@ function UserList() {
     const sortedUsers = users.sort((a, b) => b.weight - a.weight);
 
     return (
-        <div className="mt-4">
+        <ul className="mt-4">
+            <li className="flex-between">
+                <div className="flex-start w-44"></div>
+                <div className="flex-center w-32">
+                    <span className="p-2 w-16 text-primary-orange text-xs">Score</span>
+                    <span className="p-2 w-16 text-primary-orange text-xs">Time</span>
+                </div> 
+            </li>
              {sortedUsers.length > 0 ? (
                 users.map((user, index) => {
                     return (
-                        <div className="flex-between" key={index}>
+                        <li className="flex-between" key={index}>
                             <div className="flex-between">
                                 <Image src={user.image} alt="user.username" width={40} height={40} />
                                 <h3 className="p-2">
@@ -34,18 +41,18 @@ function UserList() {
                                 </h3>
                             </div>
                             <div className="flex-between">
-                                <span className="p-2">{user.weight}</span>
-                                <span className="p-2">{user.height}</span>
+                                <span className="p-2 w-16">{user.weight}</span>
+                                <span className="p-2 w-16">{user.height}</span>
                             </div>
-                        </div>
+                        </li>
                     )
                 })
             ) : (
                 <p>Loading...</p>
             )}
-        </div>
+        </ul>
     )
-}
+};
 
 export default function Board() {
     const durations = ['Day', 'Week', 'Month', 'Year', 'All-Time'];
@@ -74,4 +81,4 @@ export default function Board() {
             <UserList />
         </section>
     )
-}
+};
