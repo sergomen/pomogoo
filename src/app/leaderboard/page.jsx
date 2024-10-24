@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import TimeCard from '@/components/TimeCard';
+import Board from '@/components/Board';
 
 const TimeCardList = ({ data }) => {
     return (
@@ -31,9 +32,10 @@ export default function Leaderboard() {
 
     return (
         <section>
-            <TimeCardList
+            {/* <TimeCardList
                 data={posts}
-            />
+            /> */}
+            <Board />
         </section>
     )
 }
