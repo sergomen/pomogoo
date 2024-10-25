@@ -19,23 +19,28 @@ const TimeCardList = ({ data }) => {
 
 export default function Leaderboard() {
     const [posts, setPosts] = useState([]);
+    const [duration, setDuration] = useState('All-Time'); // Default filter
+    const [sortOption, setSortOption] = useState('Score'); // Default sort option
 
+    // Fetching data on mount
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await fetch('/api/time');
             const data = await response.json();
-
             setPosts(data);
-        }
+        };
         fetchPosts();
     }, []);
 
     return (
         <section>
-            {/* <TimeCardList
-                data={posts}
-            /> */}
-            <Board />
+            <Board 
+                posts={posts} 
+                duration={duration} 
+                setDuration={setDuration} 
+                sortOption={sortOption} 
+                setSortOption={setSortOption} 
+            />
         </section>
     )
 }
