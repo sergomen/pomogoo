@@ -1,0 +1,107 @@
+/* app/not-found.module.css */
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:80vh;
+    padding: 20px;
+    font-size: 1.5rem;
+  }
+  
+  .errorTitle {
+    font-size: 4rem;
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .errorMessage {
+    margin-bottom: 60px;
+    font-size: 1.8rem;
+  }
+  
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .homeLink {
+    text-decoration: none;
+    color: #0070f3;
+    font-size: 1.8rem;
+    transition: color 0.3s ease-in-out;
+    margin-bottom: 20px;
+  }
+  
+  .homeLink:hover {
+    color: #0056b3;
+  }
+  
+  .searchInput {
+    padding: 10px;
+    font-size: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Responsive width */
+    max-width: 300px; /* Maximum width */
+  }
+  
+  .searchButton {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #0070f3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 100%; /* Responsive width */
+    max-width: 300px; /* Maximum width */
+  }
+  
+  .searchButton:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Breakpoints */
+  @media (max-width: 768px) {
+    .errorTitle {
+      font-size: 3rem;
+    }
+    .errorMessage {
+      font-size: 1.6rem;
+    }
+    .homeLink {
+      font-size: 1.6rem;
+    }
+    .searchInput, .searchButton {
+      padding: 8px;
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .errorTitle {
+      font-size: 2.5rem;
+    }
+    .errorMessage {
+      font-size: 1.4rem;
+    }
+    .homeLink {
+      font-size: 1.4rem;
+    }
+    .searchInput, .searchButton {
+      padding: 6px;
+      font-size: 1.2rem;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
