@@ -59,7 +59,7 @@ function ModalSettings({
                             <input
                                 defaultValue={input.defaultValue}
                                 type="number"
-                                className="w-full bg-gray-400 bg-opacity-30 py-2 rounded outline-none text-center"
+                                className="w-full font-semibold text-[#65686d] bg-gray-400 bg-opacity-30 py-2 rounded outline-none text-center"
                                 ref={input.ref}
                             />
                         </div>  
