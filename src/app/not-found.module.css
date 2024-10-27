@@ -1,107 +1,67 @@
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
 /* app/not-found.module.css */
 .errorContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height:80vh;
-    padding: 20px;
-    font-size: 1.5rem;
-  }
-  
+  @apply flex flex-col items-center justify-center h-[80vh] text-2xl p-5;
+}
+.errorTitle {
+  @apply text-[4rem] animate-[fadeIn_1s_ease-in-out] mb-10;
+}
+.errorMessage {
+  @apply text-[1.8rem] mb-[60px];
+}
+.actions {
+  @apply flex flex-col items-center;
+}
+.homeLink {
+  @apply no-underline text-[#0070f3] text-[1.8rem] transition-[color] duration-[0.3s] ease-[ease-in-out] mb-5 hover:text-[#0056b3];
+}
+.searchInput {
+  @apply text-2xl border w-full max-w-[300px] p-2.5 rounded-[5px] border-solid border-[#ccc]; /* Responsive width */ /* Maximum width */
+}
+.searchButton {
+  @apply text-2xl bg-[#0070f3] text-[white] cursor-pointer transition-[background-color] duration-[0.3s] ease-[ease-in-out] w-full max-w-[300px] px-5 py-2.5 rounded-[5px] border-[none] hover:bg-[#0056b3]; /* Responsive width */ /* Maximum width */
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
   .errorTitle {
-    font-size: 4rem;
-    margin-bottom: 40px;
-    animation: fadeIn 1s ease-in-out;
+    @apply text-5xl;
   }
-  
   .errorMessage {
-    margin-bottom: 60px;
-    font-size: 1.8rem;
+    @apply text-[1.6rem];
   }
-  
-  .actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
   .homeLink {
-    text-decoration: none;
-    color: #0070f3;
-    font-size: 1.8rem;
-    transition: color 0.3s ease-in-out;
-    margin-bottom: 20px;
+    @apply text-[1.6rem];
   }
-  
-  .homeLink:hover {
-    color: #0056b3;
-  }
-  
-  .searchInput {
-    padding: 10px;
-    font-size: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%; /* Responsive width */
-    max-width: 300px; /* Maximum width */
-  }
-  
+  .searchInput,
   .searchButton {
-    padding: 10px 20px;
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 5px;
-    background-color: #0070f3;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    width: 100%; /* Responsive width */
-    max-width: 300px; /* Maximum width */
+    @apply text-[1.3rem] p-2;
   }
-  
-  .searchButton:hover {
-    background-color: #0056b3;
+}
+@media (max-width: 480px) {
+  .errorTitle {
+    @apply text-[2.5rem];
   }
-  
-  /* Responsive Breakpoints */
-  @media (max-width: 768px) {
-    .errorTitle {
-      font-size: 3rem;
-    }
-    .errorMessage {
-      font-size: 1.6rem;
-    }
-    .homeLink {
-      font-size: 1.6rem;
-    }
-    .searchInput, .searchButton {
-      padding: 8px;
-      font-size: 1.3rem;
-    }
+  .errorMessage {
+    @apply text-[1.4rem];
   }
-  
-  @media (max-width: 480px) {
-    .errorTitle {
-      font-size: 2.5rem;
-    }
-    .errorMessage {
-      font-size: 1.4rem;
-    }
-    .homeLink {
-      font-size: 1.4rem;
-    }
-    .searchInput, .searchButton {
-      padding: 6px;
-      font-size: 1.2rem;
-    }
+  .homeLink {
+    @apply text-[1.4rem];
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  .searchInput,
+  .searchButton {
+    @apply text-[1.2rem] p-1.5;
   }
+}
+@keyframes fadeIn {
+  from {
+    @apply opacity-0;
+  }
+  to {
+    @apply opacity-100;
+  }
+}
