@@ -13,6 +13,7 @@ module.exports = {
         'primary-orange': '#FF5722',
         'primary-light': '#F3F3F2',
         'primary-dark': '#2C3131',
+        'text-for-light': '#65686d',
       },
       fontFamily: {
         satoshi: ['Satoshi', 'sans-serif'],
