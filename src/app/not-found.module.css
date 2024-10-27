@@ -1,0 +1,62 @@
+/* app/not-found.module.css */
+.errorContainer {
+  @apply flex flex-col items-center justify-center h-[80vh] text-2xl p-5;
+}
+.errorTitle {
+  @apply text-[4rem] animate-[fadeIn_1s_ease-in-out] mb-10;
+}
+.errorMessage {
+  @apply text-[1.8rem] mb-[60px];
+}
+.actions {
+  @apply flex flex-col items-center;
+}
+.homeLink {
+  @apply no-underline text-[#0070f3] text-[1.8rem] transition-[color] duration-[0.3s] ease-[ease-in-out] mb-5 hover:text-[#0056b3];
+}
+.searchInput {
+  @apply text-2xl border w-full max-w-[300px] p-2.5 rounded-[5px] border-solid border-[#ccc]; /* Responsive width */ /* Maximum width */
+}
+.searchButton {
+  @apply text-2xl bg-[#0070f3] text-[white] cursor-pointer transition-[background-color] duration-[0.3s] ease-[ease-in-out] w-full max-w-[300px] px-5 py-2.5 rounded-[5px] border-[none] hover:bg-[#0056b3]; /* Responsive width */ /* Maximum width */
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .errorTitle {
+    @apply text-5xl;
+  }
+  .errorMessage {
+    @apply text-[1.6rem];
+  }
+  .homeLink {
+    @apply text-[1.6rem];
+  }
+  .searchInput,
+  .searchButton {
+    @apply text-[1.3rem] p-2;
+  }
+}
+@media (max-width: 480px) {
+  .errorTitle {
+    @apply text-[2.5rem];
+  }
+  .errorMessage {
+    @apply text-[1.4rem];
+  }
+  .homeLink {
+    @apply text-[1.4rem];
+  }
+  .searchInput,
+  .searchButton {
+    @apply text-[1.2rem] p-1.5;
+  }
+}
+@keyframes fadeIn {
+  from {
+    @apply opacity-0;
+  }
+  to {
+    @apply opacity-100;
+  }
+}
