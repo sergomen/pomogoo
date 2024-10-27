@@ -7,7 +7,7 @@ export default function NotFound() {
     <div className={styles.errorContainer}>
       <h1 className={styles.errorTitle}>404 - Page Not Found</h1>
       <p className={styles.errorMessage}>
-        It seems we can't find what you're looking for. Perhaps searching can help.
+        It seems we can&apos;t find what you&apos;re looking for. Perhaps searching can help.
       </p>
       <div className={styles.actions}>
         <Link href="/" className={styles.homeLink}>
