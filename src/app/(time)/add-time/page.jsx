@@ -19,13 +19,22 @@ export default function AddTime() {
     const addTime = async (e) => {
         e.preventDefault();
         setSubmitting(true);
+
+        // Calculate score based on hours input
+        const minutes = post.time;
+        const hours = Math.floor(minutes / 60);
+        const fractions = (minutes % 60) / 60;
+        const score = (hours + fractions).toFixed(2);
+        // console.log('score', score);
+
         try {
             const response = await fetch('/api/time/new', {
                 method: 'POST',
                 body: JSON.stringify({
                     time: post.time,
                     userId: session?.user.id,
-                    title: post.title
+                    title: post.title,
+                    score: score,
                 })
             });
             
