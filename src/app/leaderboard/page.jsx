@@ -1,23 +1,23 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import TimeCard from '@/components/TimeCard';
+// import TimeCard from '@/components/TimeCard';
 import Board from '@/components/Board';
 
-const TimeCardList = ({ data }) => {
-    return (
-        <div className="mt-16 time_layout">
-            {data.map((post) => (
-                <TimeCard
-                    key={post._id}
-                    post={post}
-                />
-            ))}
-        </div>
-    )
-}
+// const TimeCardList = ({ data }) => {
+//     return (
+//         <div className="mt-16 time_layout">
+//             {data.map((post) => (
+//                 <TimeCard
+//                     key={post._id}
+//                     post={post}
+//                 />
+//             ))}
+//         </div>
+//     )
+// }
 
-export default function Leaderboard() {
+export default function Leaderboard () {
     const [posts, setPosts] = useState([]);
     const [duration, setDuration] = useState('All-Time'); // Default filter
     const [sortOption, setSortOption] = useState('Score'); // Default sort option
