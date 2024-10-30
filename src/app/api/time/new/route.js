@@ -2,14 +2,15 @@ import { connectToDB } from '@/utils/database';
 import Time from '@/models/time';
 
 export const POST = async (req) => {
-    const { userId, time, title } = await req.json();
+    const { userId, time, title, score } = await req.json();
 
     try {
         await connectToDB();
         const newTime = new Time({
             creator: userId,
             time,
-            title
+            title,
+            score
         });
 
         await newTime.save();

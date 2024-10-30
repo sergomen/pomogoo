@@ -29,18 +29,6 @@ export default function Board({ posts }) {
     // Filtering and sorting logic using useMemo
     const filteredAndSortedUsers = useMemo(() => {
         // let filtered = [...posts];
-        // const summedTimePerUser = {};
-
-        // posts.forEach((post) => {
-        //     const userId = post.creator;
-        //     console.log('userId', userId);
-        //     const time = post.time;
-        //     summedTimePerUser[userId] = (summedTimePerUser[userId] || 0) + time;
-        //     console.log('summedTimePerUser[userId]', summedTimePerUser[userId]);
-        // });
-        // console.log('SummedTimePerUser', summedTimePerUser);
-        // Filter by duration (for now, using placeholders based on date logic)
-        // Filter by duration
 
         /* ------- posts -------
             0: 
@@ -61,48 +49,32 @@ export default function Board({ posts }) {
             1: {_id: '6716a16ccc51aea864e7db12', creator: {…}, time: 120, title: 'Best of the Best.', createdAt: '2024-10-21T18:46:04.962Z', …}
             ------- -------
         */
+
+        // Filter by duration
+        const now = new Date();
         const filteredByDuration = posts.filter((post) => {
             const postDate = new Date(post.createdAt); // Mon Oct 21 2024 21:46:04 GMT+0300
             switch (duration) {
                 case 'Day':
-                    return Date.now() - postDate <= 24 * 60 * 60 * 1000;
+                    return now - postDate <= 24 * 60 * 60 * 1000;
                 case 'Week':
-                    return Date.now() - postDate <= 7 * 24 * 60 * 60 * 1000;
+                    return now - postDate <= 7 * 24 * 60 * 60 * 1000;
                 case 'Month':
-                    return Date.now() - postDate <= 30 * 24 * 60 * 60 * 1000;
+                    return now - postDate <= 30 * 24 * 60 * 60 * 1000;
                 case 'Year':
-                    return Date.now() - postDate <= 365 * 24 * 60 * 60 * 1000;
+                    return now - postDate <= 365 * 24 * 60 * 60 * 1000;
                 default:
                     return true; // All-Time
             }
         });
         /* ------- filteredByDuration -------
-        Same as posts, but filtered.
+        Same as posts, but filtered -> [{}, {}, ...]
             ------- -------
         */
-
-        // const now = new Date();
-        // filtered = filtered.filter((post) => {
-            // const postDate = new Date(post.createdAt); // Assuming birthDate as a sample date field
-        //     switch (duration) {
-        //         case 'Day':
-        //             return now - postDate <= 24 * 60 * 60 * 1000;
-        //         case 'Week':
-        //             return now - postDate <= 7 * 24 * 60 * 60 * 1000;
-        //         case 'Month':
-        //             return now - postDate <= 30 * 24 * 60 * 60 * 1000;
-        //         case 'Year':
-        //             return now - postDate <= 365 * 24 * 60 * 60 * 1000;
-        //         default:
-        //             return true; // All-Time
-        //     }
-        // });
-
         // Sum time for each user
         const summedDataPerUser = filteredByDuration.reduce((acc, post) => {
             const userId = post.creator._id;
             // Суммирование времени для каждого пользователя
-            // acc[post.creator._id] = (acc[post.creator._id] || 0) + post.time;
             acc[userId] = {
                 time: (acc[userId]?.time || 0) + post.time,
                 score: (acc[userId]?.score || 0) + post.score,
@@ -112,12 +84,11 @@ export default function Board({ posts }) {
         // console.log('summedDataPerUser', summedDataPerUser);
         /* ------- summedTimePerUser -------
             {
-                [object Object]: 180
-            }
-
-            {
-                6711763f58d5d4995dc04963: 180
-            }
+                userId: {
+                    score: 1
+                    time: 200
+                }
+            },
             ------- -------
         */
 
@@ -139,16 +110,12 @@ export default function Board({ posts }) {
         */
 
         const sortedUsersWithData = sortedUsers.map((userId) => {
-        // ({
-        //     creator: userId,
-        //     time: summedTimePerUser[userId],
-        //     // Add additional user data if needed
-        // }));
             const userData = posts.find(post => post.creator._id === userId);
+
             if (!userData) {
                 return null;
             }
-            // const { creator, time } = userData;
+  
             const user = {
                 creator: userData.creator,
                 time: summedDataPerUser[userId].time,
@@ -157,22 +124,10 @@ export default function Board({ posts }) {
                 image: userData.creator.image,
             };
             return user;
-        }).filter(user => user !== null); // Фильтруем, чтобы убрать null значения
+        }).filter(user => user !== null); // Filter to delete null values
 
         return sortedUsersWithData;
         
-        // Sort users by Score (weight) or Time (birthDate)
-        // filtered.sort((a, b) => {
-        //     if (sortOption === 'Score') {
-        //         return b.time - a.time; // Assuming weight represents score
-        //     } else if (sortOption === 'Time') {
-        //         return new Date(b.createdAt) - new Date(a.createdAt); // Newest first
-        //     }
-        // });
-        // console.log('filtered', filtered);
-        // return filtered;
-        // users, 
-        // , sortOption
     }, [posts, duration, sortOption]);
 
     return (

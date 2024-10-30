@@ -13,6 +13,10 @@ const TimeSchema = new Schema({
         type: String,
         required: [true, 'Title is required.'],
     },
+    score: {
+        type: Number,
+        default: 0,
+    }
 }, { timestamps: true })
 
 const Time = models.Time || model('Time', TimeSchema);
