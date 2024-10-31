@@ -28,7 +28,7 @@ body {
 
 /* Tailwind Styles */
 .app {
-  @apply sm:px-16 px-6;
+  @apply flex flex-col sm:px-16 px-6 min-h-screen;
 }
 
 .head_text {
