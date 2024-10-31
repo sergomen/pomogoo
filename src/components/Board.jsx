@@ -74,10 +74,11 @@ export default function Board({ posts }) {
         // Sum time for each user
         const summedDataPerUser = filteredByDuration.reduce((acc, post) => {
             const userId = post.creator._id;
-            // Суммирование времени для каждого пользователя
+            // Time summation for each user
+            // console.log('post.score', post.score);
             acc[userId] = {
                 time: (acc[userId]?.time || 0) + post.time,
-                score: (acc[userId]?.score || 0) + post.score,
+                score: Math.round(((acc[userId]?.score || 0) + post.score + + Number.EPSILON) * 100) / 100,
             };
             return acc;
         }, {});
@@ -193,7 +194,7 @@ export default function Board({ posts }) {
                         </li>
                     ))
                 ) : (
-                    <p>There are no users...</p>
+                    <p>Loading...</p>
                 )}
             </ul>
         </section>

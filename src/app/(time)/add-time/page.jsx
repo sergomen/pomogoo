@@ -24,8 +24,10 @@ export default function AddTime() {
         const minutes = post.time;
         const hours = Math.floor(minutes / 60);
         const fractions = (minutes % 60) / 60;
-        const score = (hours + fractions).toFixed(2);
-        // console.log('score', score);
+        // const score = (hours + fractions).toFixed(2);
+        const score = Math.round((hours + fractions) * 100) / 100;
+        // const score = hours + fractions;
+        // console.log(score);
 
         try {
             const response = await fetch('/api/time/new', {
@@ -39,7 +41,7 @@ export default function AddTime() {
             });
             
             if (response.ok) {
-                router.push('/profile');
+                router.push('/leaderboard');
             }
         } catch (error) {
             console.log(error);
