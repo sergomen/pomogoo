@@ -25,7 +25,7 @@ export default function Navbar() {
           const res = await getProviders();
           setProviders(res);
         })();
-      }, []);
+    }, []);
 
     return (
         <nav className="flex-between w-full mb-16 pt-3 px-2">
@@ -75,7 +75,13 @@ export default function Navbar() {
                         </Link>
                     </div>
                 ) : (
-                    <>
+                    <div className="flex-center gap-3 md:gap-5">
+                        <Link 
+                            href="/leaderboard"
+                            className="black_btn"
+                        >
+                            Leaderboard
+                        </Link>
                         {providers &&
                             Object.values(providers).map((provider) => (
                                 <button
@@ -88,23 +94,26 @@ export default function Navbar() {
                                 </button>
                             ))
                         }
-                    </>
+                    </div>
                 )}
             </div>
 
             {/* Mobile Navigation */}
             <div className="sm:hidden flex">
                 {session?.user ? (
-                    <div className="flex relative">
+                    <div className="flex-between relative gap-3">
+                        <Link 
+                            href="/leaderboard"
+                            className="black_btn"
+                        >Leaderboard</Link>
                         <Image
                             src={session?.user.image}
                             alt="profile"
                             width={37}
                             height={37}
                             className="rounded-full"
-                            onClick={() => setToggleDropdown((prev1) => !prev1)}
+                            onClick={() => setToggleDropdown((prev) => !prev)}
                         />
-                        
                         {toggleDropdown && (
                             <div className="dropdown">
                                 <Link
@@ -121,13 +130,6 @@ export default function Navbar() {
                                 >
                                     Add Time
                                 </Link>
-                                <Link 
-                                    href="/leaderboard"
-                                    className="w-full black_btn"
-                                    onClick={() => setToggleDropdown(false)}
-                                >
-                                    Leaderboard
-                                </Link>
                                 <button
                                     type="button"
                                     className="w-full mt-1 black_btn"
@@ -142,7 +144,13 @@ export default function Navbar() {
                         )}
                     </div>
                 ) : (
-                    <>
+                    <div className="flex-center gap-1">
+                        <Link 
+                            href="/leaderboard"
+                            className="black_btn"
+                        >
+                            Leaderboard
+                        </Link>
                         {providers &&
                             Object.values(providers).map((provider) => (
                                 <button
@@ -155,7 +163,7 @@ export default function Navbar() {
                                 </button>
                             ))
                         }
-                    </>
+                    </div>
                 )}
             </div>
         </nav>
