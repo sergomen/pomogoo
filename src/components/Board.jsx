@@ -9,6 +9,7 @@ export default function Board({ posts }) {
 
     const [duration, setDuration] = useState('All-Time'); // Default filter
     const [sortOption, setSortOption] = useState('Score'); // Default sorting option
+    const [loading, setLoading] = useState(true);
     // const [users, setUsers] = useState([]);
     // console.log('posts', posts);
 
@@ -26,8 +27,24 @@ export default function Board({ posts }) {
     //         .catch((error) => console.error('Error fetching users:', error));
     // }, []);
 
+    useEffect(() => {
+        if (posts.length === 0) {
+            setLoading(false);
+        }
+    }, [posts]);
+
+    function padTo2Digits(num) {
+        return num.toString().padStart(2, '0');
+      }
+
     // Filtering and sorting logic using useMemo
     const filteredAndSortedUsers = useMemo(() => {
+        const time_format = (minutes) => {
+            let hours = Math.floor(minutes/60)
+            minutes = minutes % 60
+            
+            return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}` 
+        }
         // let filtered = [...posts];
 
         /* ------- posts -------
@@ -119,7 +136,7 @@ export default function Board({ posts }) {
   
             const user = {
                 creator: userData.creator,
-                time: summedDataPerUser[userId].time,
+                time: time_format(summedDataPerUser[userId].time),
                 score: summedDataPerUser[userId].score,
                 username: userData.creator.username,
                 image: userData.creator.image,
@@ -166,11 +183,18 @@ export default function Board({ posts }) {
                     ))}
                 </select>
             </div>
-
+            {/* 🍅🕒 */}
             {/* User List */}
-            <ul className="mt-4">
-                {/* {console.log('sortedandfilterd', filteredAndSortedUsers)} */}
-                {filteredAndSortedUsers.length > 0 ? (
+            <ul className="text-start mt-4">
+                <li className="flex-end">
+                    <div className="flex-between">
+                        <span className="p-2 w-16">Score</span>
+                        <span className="p-2 w-16">Time</span>
+                    </div>
+                </li>
+                {loading ? (
+                    <p>Loading...</p>
+                ) : filteredAndSortedUsers.length > 0 ? (
                     filteredAndSortedUsers.map((user, index) => (
                         <li className="flex-between" key={index}>
                             <div className="flex-between">
@@ -181,7 +205,6 @@ export default function Board({ posts }) {
                                     height={40}
                                 />
                                 <h3 className="p-2">
-                                    {/* {user.firstName} {user.lastName} */}
                                     {user.creator.username}
                                 </h3>
                             </div>
@@ -194,7 +217,7 @@ export default function Board({ posts }) {
                         </li>
                     ))
                 ) : (
-                    <p>Loading...</p>
+                    <p>No users available.</p>
                 )}
             </ul>
         </section>
