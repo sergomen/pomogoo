@@ -203,6 +203,7 @@ export default function Board({ posts }) {
                                     alt="user_image"
                                     width={40}
                                     height={40}
+                                    className="rounded-full m-1"
                                 />
                                 <h3 className="p-2">
                                     {user.creator.username}
