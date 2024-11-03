@@ -40,11 +40,11 @@ export default function Board({ posts }) {
     // Filtering and sorting logic using useMemo
     const filteredAndSortedUsers = useMemo(() => {
         const time_format = (minutes) => {
-            let hours = Math.floor(minutes/60)
-            minutes = minutes % 60
+            let hours = Math.floor(minutes/60);
+            minutes = minutes % 60;
             
-            return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}` 
-        }
+            return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}`
+        };
         // let filtered = [...posts];
 
         /* ------- posts -------
@@ -170,7 +170,6 @@ export default function Board({ posts }) {
             {/* Sorting Dropdown */}
             <div className="mt-4">
             <span className="text-border-light font-semibold">Sort by:</span>
-
                 <select
                     value={sortOption}
                     onChange={(e) => setSortOption(e.target.value)}
@@ -196,18 +195,21 @@ export default function Board({ posts }) {
                     <p>Loading...</p>
                 ) : filteredAndSortedUsers.length > 0 ? (
                     filteredAndSortedUsers.map((user, index) => (
-                        <li className="flex-between" key={index}>
+                        <li className="flex-between m-1" key={index}>
                             <div className="flex-between">
-                                <Image
-                                    src={user.creator.image}
-                                    alt="user_image"
-                                    width={40}
-                                    height={40}
-                                    className="rounded-full m-1"
-                                />
-                                <h3 className="p-2">
-                                    {user.creator.username}
-                                </h3>
+                                <div className="relative w-10 h-10">
+                                    <Image
+                                        src={user.creator.image}
+                                        alt="user_image"
+                                        // width={40}
+                                        // height={40}
+                                        fill
+                                        sizes="(max-width: 350px) 30vw, 40px"
+                                        className="rounded-full"
+                                        style={{ objectFit: 'cover' }}
+                                    />
+                                </div>
+                                <h3 className="p-2">{user.creator.username}</h3>
                             </div>
                             <div className="flex-between">
                                 {/* {user.time} */}
@@ -223,4 +225,4 @@ export default function Board({ posts }) {
             </ul>
         </section>
     );
-}
+};
