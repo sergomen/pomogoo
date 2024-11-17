@@ -4,13 +4,6 @@ import { useState } from 'react';
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
     const [inputType, setInputType] = useState('minutes');
 
-    // useEffect(() => {
-        // const savedInputType = 
-        // if (savedInputType) {
-
-        // }
-    // }, []);
-
     const handleInputChange = (e) => {
         const value = e.target.value;
         console.log('value', value);
@@ -20,7 +13,6 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
 
     const handleTimeChange = (e) => {
         const inputValue = e.target.value;
-        const numericValue = inputValue.replace(/[^0-9]/g, '');
 
         if (inputValue.includes(':')) {
             const [hoursInput, minutesInput] = inputValue.split(':');
@@ -34,7 +26,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         }
 
         if (inputType === 'minutes') {
-            setPost({ ...post, time: numericValue });
+            const timeInMinutes = inputValue.replace(/[^0-9]/g, '');
+            setPost({ ...post, time: timeInMinutes });
         }
     };
 
