@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import DarkModeToggle from '@/components/DarkModeToggle';
 
 export default function Navbar() {
     const { data: session } = useSession();
@@ -63,6 +64,7 @@ export default function Navbar() {
                         >
                             Sign Out
                         </button>
+                        <DarkModeToggle />
 
                         <Link href="/profile">
                             <Image
@@ -94,6 +96,7 @@ export default function Navbar() {
                                 </button>
                             ))
                         }
+                        <DarkModeToggle />
                     </div>
                 )}
             </div>
@@ -114,6 +117,7 @@ export default function Navbar() {
                             className="rounded-full"
                             onClick={() => setToggleDropdown((prev) => !prev)}
                         />
+                        <DarkModeToggle />
                         {toggleDropdown && (
                             <div className="dropdown">
                                 <Link
@@ -163,6 +167,7 @@ export default function Navbar() {
                                 </button>
                             ))
                         }
+                        <DarkModeToggle />
                     </div>
                 )}
             </div>

@@ -36,14 +36,14 @@ function ModalSettings({
             onClick={() => setOpenSettings(false)}
         ></div>
         <div
-            className={`max-w-xl bg-white absolute sm:w-96 w-11/12 left-1/2 top-1/2 p-5 rounded-md ${
+            className={`max-w-xl bg-background absolute sm:w-96 w-11/12 left-1/2 top-1/2 p-5 rounded-md border border-gray-200 dark:border-gray-800 shadow-2xl ${
                 openSettings ? '' : 'hidden'
             }`}
             style={{
                 transform: "translate(-50%, -50%)",
             }}
         >
-            <div className="flex justify-between items-center text-gray-400">
+            <div className="flex justify-between items-center text-foreground opacity-60">
                 <h1 className="uppercase font-bold tracking-wider">Time settings</h1>
                 <FiX 
                     className="text-2xl cursor-pointer"
@@ -59,7 +59,7 @@ function ModalSettings({
                             <input
                                 defaultValue={input.defaultValue}
                                 type="number"
-                                className="w-full bg-gray-400 bg-opacity-30 py-2 rounded outline-none text-center"
+                                className="w-full bg-gray-200 dark:bg-gray-800 py-2 rounded outline-none text-center text-foreground focus:ring-2 focus:ring-primary-orange transition-all"
                                 ref={input.ref}
                             />
                         </div>  

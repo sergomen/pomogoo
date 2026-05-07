@@ -123,7 +123,7 @@ export default function Home() {
   }, [seconds, pomodoro, shortBreak, longBreak, ticking]);
 
   return (
-    <section className="bg-slate-950 min-h-screen">
+    <section className="bg-background text-foreground min-h-screen">
       <div className="max-w-2xl mx-auto">
         <TimerNavbar setOpenSettings={setOpenSettings} />
         <Timer 

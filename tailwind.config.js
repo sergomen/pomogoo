@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,6 +14,8 @@ module.exports = {
         'primary-orange': '#FF5722',
         'primary-light': '#F3F3F2',
         'primary-dark': '#2C3131',
+        'border-light': '#F3F3F2',
+        'border-dark': '#2C3131',
       },
       fontFamily: {
         satoshi: ['Satoshi', 'sans-serif'],

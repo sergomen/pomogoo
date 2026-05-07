@@ -2,22 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Default to light mode variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark mode variables applied via the .dark class */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
+html,
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer utilities {
@@ -32,7 +34,7 @@ body {
 }
 
 .head_text {
-  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-foreground sm:text-6xl;
 }
 
 .red_gradient {
@@ -48,7 +50,7 @@ body {
 }
 
 .desc {
-  @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
+  @apply mt-5 text-lg text-gray-600 dark:text-gray-400 sm:text-xl max-w-2xl;
 }
 
 .time_layout {
@@ -73,35 +75,39 @@ body {
 
 /* Form Component */
 .form_textarea {
-  @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-foreground bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-0;
 }
 
 .form_input {
-  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-foreground bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-0;
+}
+
+.glassmorphism {
+  @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-10px_20px_rgba(255,255,255,0.2)] backdrop-blur p-5 dark:border-gray-800 dark:bg-black/20 dark:shadow-[inset_10px_-10px_20px_rgba(0,0,0,0.2)];
 }
 
 /* Nav Component */
 .logo_text {
-  @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
+  @apply max-sm:hidden font-satoshi font-semibold text-lg text-foreground tracking-wide;
 }
 
 .dropdown {
-  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white dark:bg-gray-800 min-w-[210px] flex flex-col gap-2 justify-end items-end shadow-lg;
 }
 
 .dropdown_link {
-  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
+  @apply text-sm font-inter text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white font-medium;
 }
 
 .black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-black dark:border-white bg-black dark:bg-white py-1.5 px-5 text-white dark:text-black transition-all hover:bg-white hover:text-black dark:hover:bg-transparent dark:hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
 
 .outline_btn {
-  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-black dark:border-white bg-transparent py-1.5 px-5 text-black dark:text-white transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
 
 /* TimeCard Component */
 .time_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 dark:border-gray-700 bg-white/20 dark:bg-gray-800/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
 }
