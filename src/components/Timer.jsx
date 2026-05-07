@@ -16,7 +16,7 @@ export default function Timer({
     const options = ["Pomodoro", "Short Break", "Long Break"];
 
     return (
-        <div className="flex flex-col justify-center items-center w-10/12 pt-5 mt-10 mx-auto text-white">
+        <div className="flex flex-col justify-center items-center w-10/12 pt-5 mt-10 mx-auto text-foreground">
             <div className="flex items-center gap-5 text-center">
                 {options.map((option, index) => {
                     return (
@@ -24,7 +24,7 @@ export default function Timer({
                             key={index}
                             className={`${
                                 index === stage ? "bg-gray-500 bg-opacity-30" : ""
-                            } p-1 cursor-pointer transition-all rounded`}
+                            } p-1 cursor-pointer transition-all rounded text-foreground`}
                             onClick={() => switchStage(index)}
                         >
                             {option}
@@ -39,7 +39,7 @@ export default function Timer({
             </div>
             <div className="flex gap-2 items-center">
                 <button 
-                    className="px-16 py-2 text-2xl rounded-md bg-white text-blue-500 uppercase font-bold"
+                    className="px-16 py-2 text-2xl rounded-md bg-foreground text-background uppercase font-bold transition-colors"
                     onClick={startTimer}
                         // setTicking((ticking) => !ticking)}
                 >
@@ -47,14 +47,14 @@ export default function Timer({
                 </button>
                 {isTimeUp && (
                     <FiBellOff
-                        className="text-3xl text-white cursor-pointer"
+                        className="text-3xl text-foreground cursor-pointer"
                         onClick={muteAlarm}
                     />
                 )}
             </div>
             {ticking && (
                 <button 
-                    className="uppercase text-white underline mt-5"
+                    className="uppercase text-foreground underline mt-5 opacity-70 hover:opacity-100"
                     onClick={reset}
                 >
                     Reset

@@ -23,17 +23,17 @@ export default function TimeCard({ post, handleEdit, handleDelete }) {
                     />
 
                     <div className="flex flex-col">
-                        <h3 className="font-satoshi font-semibold text-gray-900">
+                        <h3 className="font-satoshi font-semibold text-gray-900 dark:text-gray-100">
                             {post.creator.username}
                         </h3>
                     </div>
                 </div>
             </div>
-            <p className="my-4 font-satoshi text-sm text-gray-700">{post.time}</p>
-            <p className="my-4 font-satoshi text-sm text-gray-700">{post.title}</p>
+            <p className="my-4 font-satoshi text-sm text-gray-700 dark:text-gray-300">{post.time}</p>
+            <p className="my-4 font-satoshi text-sm text-gray-700 dark:text-gray-300">{post.title}</p>
 
             {session?.user.id === post.creator._id && pathName === '/profile' && (
-                <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+                <div className="mt-5 flex-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-3">
                     <p
                         className="font-inter text-sm green_gradient cursor-pointer"
                         onClick={handleEdit}

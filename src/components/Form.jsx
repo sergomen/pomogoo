@@ -56,9 +56,12 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                 onSubmit={handleSubmit}
             >
                 <label>
-                    <span className="font-satoshi font-semibold text-base text-gray-700">Your Daily Time in </span>
-                    <span>
-                        <select onChange={handleInputChange}>
+                <span className="font-satoshi font-semibold text-base text-gray-700 dark:text-gray-300">Your Daily Time in </span>
+                <span>
+                    <select 
+                        onChange={handleInputChange}
+                        className="bg-transparent text-foreground border-b border-gray-300 dark:border-gray-700 outline-none cursor-pointer"
+                    >
                             <option>
                                 minutes
                             </option>
@@ -88,7 +91,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                 </label>
 
                 <label>
-                    <span className="font-satoshi font-semibold text-base text-gray-700">
+                    <span className="font-satoshi font-semibold text-base text-gray-700 dark:text-gray-300">
                         Description
                     </span>
 
@@ -102,7 +105,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                 </label>
 
                 <div className="flex-end mx-3 mb-5 gap-4">
-                    <Link href="/" className="text-gray-500 text-sm">
+                    <Link href="/" className="text-gray-500 dark:text-gray-400 text-sm hover:text-foreground">
                         Cancel
                     </Link>
 

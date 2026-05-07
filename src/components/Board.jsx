@@ -169,7 +169,7 @@ export default function Board({ posts }) {
 
             {/* Sorting Dropdown */}
             <div className="mt-4">
-            <span className="text-border-light font-semibold">Sort by:</span>
+            <span className="text-foreground font-semibold">Sort by:</span>
                 <select
                     value={sortOption}
                     onChange={(e) => setSortOption(e.target.value)}
@@ -185,10 +185,10 @@ export default function Board({ posts }) {
             {/* 🍅🕒 */}
             {/* User List */}
             <ul className="text-start mt-4">
-                <li className="flex-end">
+                <li className="flex-end opacity-60">
                     <div className="flex-between">
-                        <span className="p-2 w-16">Score</span>
-                        <span className="p-2 w-16">Time</span>
+                        <span className="p-2 w-16 text-sm">Score</span>
+                        <span className="p-2 w-16 text-sm">Time</span>
                     </div>
                 </li>
                 {loading ? (

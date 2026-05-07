@@ -4,7 +4,7 @@ import { FiCommand, FiSettings } from 'react-icons/fi';
 function TimerNavbar({ setOpenSettings }) {
   // console.log("Rebuilding");
   return (
-    <nav className="flex justify-between mx-auto w-11/12 pt-5 text-white">
+    <nav className="flex justify-between mx-auto w-11/12 pt-5 text-foreground">
         <div className="flex items-center gap-1 cursor-pointer">
             <FiCommand className="text-sm" />
             <h1>PomoGoo</h1>
